@@ -7,11 +7,18 @@ Class {
 { #category : #tests }
 TestCodiceFiscale >> testGetRelevantLettersFromName [
 			
-	| name result |
-	name := 'EUGENIO'.
-	result := CodiceFiscale getRelevantLettersFromName: name.
+	| result tests |
 	
-	self assert: (result at: #vowels) size equals: 5.
-	self assert: (result at: #consonants) size equals: 2.
+	tests := {
+		{ #name -> 'EUGENIO' . #vowels -> 'EUEIO' . #consonants -> 'GN' } asDictionary
+	}.
+		
+	tests do: [ :test |
+		result := CodiceFiscale getRelevantLettersFromName: (test at: #name).
+		self assert: ((result at: #vowels) hasEqualElements: (test at: #vowels)).
+		self assert: ((result at: #consonants) hasEqualElements: (test at: #consonants)).
+	]
+	
+	
 	
 ]
