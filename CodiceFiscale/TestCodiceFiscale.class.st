@@ -10,7 +10,12 @@ TestCodiceFiscale >> testGetRelevantLettersFromName [
 	| result tests |
 	
 	tests := {
-		{ #name -> 'EUGENIO' . #vowels -> 'EUEIO' . #consonants -> 'GN' } asDictionary
+		{ #name -> 'EUGENIO' . #vowels -> 'EUEIO' . #consonants -> 'GN' } asDictionary.
+		{ #name -> 'BERRETTA' . #vowels -> 'EE' . #consonants -> 'BRRT' } asDictionary.
+		{ #name -> 'EEE' . #vowels -> 'EEE' . #consonants -> '' } asDictionary.
+		{ #name -> 'XXX' . #vowels -> '' . #consonants -> 'XXX' } asDictionary.
+		{ #name -> '' . #vowels -> '' . #consonants -> '' } asDictionary.
+		{ #name -> 'PQRSTE' . #vowels -> '' . #consonants -> 'PQRS' } asDictionary
 	}.
 		
 	tests do: [ :test |
