@@ -17,5 +17,15 @@ CodiceFiscale >> getRelevantLettersFromName: name [
 		#consonants -> consonants 
 	}.
 	
+	name do: [ :letter |
+		letter isVowel
+			ifTrue: [ vowels add: letter ]
+			ifFalse: [ 
+				consonants add: letter.
+				consonants size >= 4
+					ifTrue: [ ^letters ]
+			].
+	].
+	
 	^letters.
 ]
