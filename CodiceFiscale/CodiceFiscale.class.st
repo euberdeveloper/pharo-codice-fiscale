@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #helpers }
-CodiceFiscale class >> getRelevantLettersFromName [
+CodiceFiscale class >> getRelevantLettersFromName: text [
 	"A method that given a name returns an object such as { vowels: [], consonants: [] } with only the relevant letters for the codice fiscale"	
 			
 	| letters consonants vowels |
@@ -14,11 +14,11 @@ CodiceFiscale class >> getRelevantLettersFromName [
 	vowels := OrderedCollection new.
 	
 	letters := { 
-		#vowels -> vowels,
-		#consonants -> consonants 
-	}.	
+		#vowels -> vowels.
+		#consonants -> consonants
+	} asDictionary.	
 		
-	name do: [ :letter |
+	text do: [ :letter |
 		letter isVowel
 			ifTrue: [ vowels add: letter ]
 			ifFalse: [ 
