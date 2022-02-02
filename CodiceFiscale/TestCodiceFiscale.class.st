@@ -35,3 +35,21 @@ TestCodiceFiscale >> testGetRelevantLettersFromName [
 	
 	
 ]
+
+{ #category : #tests }
+TestCodiceFiscale >> testHandleName [
+			
+	| result tests |
+	
+	tests := {
+		{ #name -> 'EUGENIO' . #expected -> 'GNE' } asDictionary
+	}.
+		
+	tests do: [ :test |
+		result := CodiceFiscale handleName: (test at: #name).
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]

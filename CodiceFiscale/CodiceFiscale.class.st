@@ -43,20 +43,20 @@ CodiceFiscale class >> handleName: text [
 	relevantLetters := self getRelevantLettersFromName: text withMaxConsonants: 4.
 	CodiceFiscaleUtilities arraySwap: (relevantLetters at: #consonants) element: 3 with: 4.
 	
-	consonants := relevantLetters at: #cosonants.
+	consonants := relevantLetters at: #consonants.
 	vowels := relevantLetters at: #vowels.
 	
 	result := consonants.
 	[ result size < 3 and: vowels isNotEmpty ] whileTrue: [ 
 		result add: (vowels at: 1).
-		vowels remove: 1.
+		vowels removeFirst.
 	].
 
 	[ result size < 3 ] whileTrue: [ 
 		result add: $X.
 	].
 
-	^result.
+	^(String newFrom: result).
 
 
 	
