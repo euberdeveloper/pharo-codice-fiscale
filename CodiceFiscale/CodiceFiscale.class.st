@@ -35,6 +35,15 @@ CodiceFiscale class >> getRelevantLettersFromName: text withMaxConsonants: maxCo
 ]
 
 { #category : #helpers }
+CodiceFiscale class >> handleMonth: dateOfBirth [
+	"A method that given a date of birth returns the letters corrisponding to the month"	
+			
+	| mapper |
+	mapper := 'ABCDEHLMPRST'.
+	^(mapper at: (dateOfBirth monthIndex)).
+]
+
+{ #category : #helpers }
 CodiceFiscale class >> handleName: text [
 	"A method that given a name returns the letters that will be put in the CF"	
 			
