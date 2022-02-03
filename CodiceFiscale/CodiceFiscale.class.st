@@ -41,12 +41,16 @@ CodiceFiscale class >> handleName: text [
 	| result relevantLetters consonants vowels |
 	
 	relevantLetters := self getRelevantLettersFromName: text withMaxConsonants: 4.
-	CodiceFiscaleUtilities arraySwap: (relevantLetters at: #consonants) element: 3 with: 4.
 	
 	consonants := relevantLetters at: #consonants.
 	vowels := relevantLetters at: #vowels.
 	
-	result := consonants.
+	CodiceFiscaleUtilities arraySwap: consonants element: 3 with: 4.
+	
+	consonants size > 3
+		ifTrue: [ result := consonants copyFrom: 1 to: 3 ]
+		ifFalse: [ result := consonants ].
+		
 	[ result size < 3 and: vowels isNotEmpty ] whileTrue: [ 
 		result add: (vowels at: 1).
 		vowels removeFirst.

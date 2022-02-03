@@ -42,7 +42,13 @@ TestCodiceFiscale >> testHandleName [
 	| result tests |
 	
 	tests := {
-		{ #name -> 'EUGENIO' . #expected -> 'GNE' } asDictionary
+		{ #name -> 'EUGENIO' . #expected -> 'GNE' } asDictionary.
+		{ #name -> 'RUGGERO' . #expected -> 'RGR' } asDictionary.
+		{ #name -> 'CARLO' . #expected -> 'CRL' } asDictionary.
+		{ #name -> 'TEO' . #expected -> 'TEO' } asDictionary.
+		{ #name -> 'EOT' . #expected -> 'TEO' } asDictionary.
+		{ #name -> 'F' . #expected -> 'FXX' } asDictionary.
+		{ #name -> 'E' . #expected -> 'EXX' } asDictionary
 	}.
 		
 	tests do: [ :test |

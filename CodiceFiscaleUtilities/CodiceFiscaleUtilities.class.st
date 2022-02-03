@@ -11,7 +11,7 @@ CodiceFiscaleUtilities class >> arraySwap: arr element: x with: y [
 	| temp |
 	[
 		temp := arr at: x.
-		arr at: x put: y.
+		arr at: x put: (arr at: y).
 		arr at: y put: temp. 
 	] on: Error do: [ ^self ].
 ]
