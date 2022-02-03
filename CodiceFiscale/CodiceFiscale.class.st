@@ -42,6 +42,13 @@ CodiceFiscale class >> handleDateOfBirth: dateOfBirth [
 ]
 
 { #category : #helpers }
+CodiceFiscale class >> handleDay: dateOfBirth andSex: sex [
+	"A method that given a date of birth returns the letters corrisponding to the day"	
+			
+	^(dateOfBirth day) + sex daysValue.
+]
+
+{ #category : #helpers }
 CodiceFiscale class >> handleMonth: dateOfBirth [
 	"A method that given a date of birth returns the letters corrisponding to the month"	
 			
