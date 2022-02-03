@@ -93,3 +93,13 @@ CodiceFiscale class >> handleSurname: text [
 
 	
 ]
+
+{ #category : #helpers }
+CodiceFiscale class >> handleYear: dateOfBirth [
+	"A method that given a date of birth returns the letters corrisponding to the year"	
+			
+	| year size |
+	year := dateOfBirth year asString.
+	size := year size.
+	^String newFrom: { year at: size - 1 . year at: size }.
+]
