@@ -82,3 +82,28 @@ TestCodiceFiscale >> testHandleSurname [
 	
 	
 ]
+
+{ #category : #tests }
+TestCodiceFiscale >> testHandleYear [
+			
+	| result date tests |
+	
+	tests := {
+		{ #year -> '1999' . #expected -> '99' } asDictionary.
+		{ #year -> '2000' . #expected -> '00' } asDictionary.
+		{ #year -> '3000' . #expected -> '00' } asDictionary.
+		{ #year -> '1956' . #expected -> '56' } asDictionary.
+		{ #year -> '1963' . #expected -> '63' } asDictionary.
+		{ #year -> '1991' . #expected -> '91' } asDictionary.
+		{ #year -> '101' . #expected -> '01' } asDictionary
+	}.
+		
+	tests do: [ :test |
+		date := Date year: (test at: #year) asInteger month: 1 day: 1.
+		result := CodiceFiscale handleYear: date.
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]
