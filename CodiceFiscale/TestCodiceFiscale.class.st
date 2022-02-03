@@ -37,6 +37,25 @@ TestCodiceFiscale >> testGetRelevantLettersFromName [
 ]
 
 { #category : #tests }
+TestCodiceFiscale >> testHandleDateOfBirth [
+			
+	| result tests |
+	
+	tests := {
+		{ #date -> (Date year: 1999 month: 4 day: 23) . #expected -> '99D' } asDictionary.
+		{ #date -> (Date year: 1956 month: 7 day: 5) . #expected -> '56L' } asDictionary.
+	}.
+		
+	tests do: [ :test |
+		result := CodiceFiscale handleDateOfBirth: (test at: #date).
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]
+
+{ #category : #tests }
 TestCodiceFiscale >> testHandleMonth [
 			
 	| result date tests |
