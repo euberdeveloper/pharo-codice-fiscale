@@ -37,6 +37,36 @@ TestCodiceFiscale >> testGetRelevantLettersFromName [
 ]
 
 { #category : #tests }
+TestCodiceFiscale >> testHandleMonth [
+			
+	| result date tests |
+	
+	tests := {
+		{ #month -> 1 . #expected -> 'A' } asDictionary.
+		{ #month -> 2 . #expected -> 'B' } asDictionary.
+		{ #month -> 3 . #expected -> 'C' } asDictionary.
+		{ #month -> 4 . #expected -> 'D' } asDictionary.
+		{ #month -> 5 . #expected -> 'E' } asDictionary.
+		{ #month -> 6 . #expected -> 'H' } asDictionary.
+		{ #month -> 7 . #expected -> 'L' } asDictionary.
+		{ #month -> 8 . #expected -> 'M' } asDictionary.
+		{ #month -> 9 . #expected -> 'P' } asDictionary.
+		{ #month -> 10 . #expected -> 'R' } asDictionary.
+		{ #month -> 11 . #expected -> 'S' } asDictionary.
+		{ #month -> 12 . #expected -> 'T' } asDictionary.
+	}.
+		
+	tests do: [ :test |
+		date := Date year: 1999 asInteger month: (test at: #month) day: 1.
+		result := CodiceFiscale handleMonth: date.
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]
+
+{ #category : #tests }
 TestCodiceFiscale >> testHandleName [
 			
 	| result tests |

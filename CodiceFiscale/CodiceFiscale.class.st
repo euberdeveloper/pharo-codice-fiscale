@@ -47,7 +47,7 @@ CodiceFiscale class >> handleMonth: dateOfBirth [
 			
 	| mapper |
 	mapper := 'ABCDEHLMPRST'.
-	^(mapper at: (dateOfBirth monthIndex)).
+	^(mapper at: (dateOfBirth monthIndex)) asString.
 ]
 
 { #category : #helpers }
