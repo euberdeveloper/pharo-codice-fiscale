@@ -59,3 +59,26 @@ TestCodiceFiscale >> testHandleName [
 	
 	
 ]
+
+{ #category : #tests }
+TestCodiceFiscale >> testHandleSurname [
+			
+	| result tests |
+	
+	tests := {
+		{ #surname -> 'BERRETTA' . #expected -> 'BRR' } asDictionary.
+		{ #surname -> 'CARLO' . #expected -> 'CRL' } asDictionary.
+		{ #surname -> 'TEO' . #expected -> 'TEO' } asDictionary.
+		{ #surname -> 'EOT' . #expected -> 'TEO' } asDictionary.
+		{ #surname -> 'F' . #expected -> 'FXX' } asDictionary.
+		{ #surname -> 'E' . #expected -> 'EXX' } asDictionary
+	}.
+		
+	tests do: [ :test |
+		result := CodiceFiscale handleSurname: (test at: #surname).
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]
