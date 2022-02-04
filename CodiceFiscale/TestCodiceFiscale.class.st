@@ -122,17 +122,11 @@ TestCodiceFiscale >> testHandleName [
 	| result tests |
 	
 	tests := {
-		{ #name -> 'EUGENIO' . #expected -> 'GNE' } asDictionary.
-		{ #name -> 'RUGGERO' . #expected -> 'RGR' } asDictionary.
-		{ #name -> 'CARLO' . #expected -> 'CRL' } asDictionary.
-		{ #name -> 'TEO' . #expected -> 'TEO' } asDictionary.
-		{ #name -> 'EOT' . #expected -> 'TEO' } asDictionary.
-		{ #name -> 'F' . #expected -> 'FXX' } asDictionary.
-		{ #name -> 'E' . #expected -> 'EXX' } asDictionary
+		{ #payload -> 'BRRGNE99D23L551' . #expected -> 'A' } asDictionary
 	}.
 		
 	tests do: [ :test |
-		result := CodiceFiscale handleName: (test at: #name).
+		result := CodiceFiscale calculateControlChar: (test at: #payload).
 		self assert: result equals: (test at: #expected).
 	]
 	
