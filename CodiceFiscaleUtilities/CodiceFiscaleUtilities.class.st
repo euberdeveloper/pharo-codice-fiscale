@@ -15,3 +15,17 @@ CodiceFiscaleUtilities class >> arraySwap: arr element: x with: y [
 		arr at: y put: temp. 
 	] on: Error do: [ ^self ].
 ]
+
+{ #category : #'helper methods' }
+CodiceFiscaleUtilities class >> padInteger: n with: pad [
+	"A method that given an integer and a pad, returns a string of length pad representing the integer with leading zeros"
+			
+	| result |
+
+	result := n asString.
+	[ result size < pad ] whileTrue: [ 
+		result := '0', result.
+	].
+
+	^result.
+]

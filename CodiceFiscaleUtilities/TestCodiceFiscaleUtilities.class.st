@@ -22,3 +22,17 @@ TestCodiceFiscaleUtilities >> testArraySwap [
 	 
 	CodiceFiscaleUtilities arraySwap: array element: 3 with: 23.
 ]
+
+{ #category : #tests }
+TestCodiceFiscaleUtilities >> testPadIntegerWith [	
+			
+	| result |
+	result := CodiceFiscaleUtilities padInteger: 5 with: 1.
+	self assert: result equals: '5'.
+	
+	result := CodiceFiscaleUtilities padInteger: 5 with: 2.
+	self assert: result equals: '05'.
+	
+	result := CodiceFiscaleUtilities padInteger: 10 with: 2.
+	self assert: result equals: '10'.
+]

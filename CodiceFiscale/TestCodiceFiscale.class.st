@@ -37,17 +37,17 @@ TestCodiceFiscale >> testGetRelevantLettersFromName [
 ]
 
 { #category : #tests }
-TestCodiceFiscale >> testHandleDateOfBirth [
+TestCodiceFiscale >> testHandleDateOfBirthAndSex [
 			
 	| result tests |
 	
 	tests := {
-		{ #date -> (Date year: 1999 month: 4 day: 23) . #expected -> '99D' } asDictionary.
-		{ #date -> (Date year: 1956 month: 7 day: 5) . #expected -> '56L' } asDictionary.
+		{ #date -> (Date year: 1999 month: 4 day: 23) . #sex -> CodiceFiscaleMale . #expected -> '99D23' } asDictionary.
+		{ #date -> (Date year: 1956 month: 7 day: 5) . #sex -> CodiceFiscaleMale . #expected -> '56L05' } asDictionary.
 	}.
 		
 	tests do: [ :test |
-		result := CodiceFiscale handleDateOfBirth: (test at: #date).
+		result := CodiceFiscale handleDateOfBirth: (test at: #date) andSex: (test at: #sex).
 		self assert: result equals: (test at: #expected).
 	]
 	
@@ -61,12 +61,19 @@ TestCodiceFiscale >> testHandleDayAndSex [
 	| result date tests |
 	
 	tests := {
-		{ #day -> 1 . #sex -> CodiceFiscaleMale . #expected -> '1' } asDictionary.
-		{ #day -> 3 . #sex -> CodiceFiscaleMale . #expected -> '3' } asDictionary.
-		{ #day -> 5 . #sex -> CodiceFiscaleMale . #expected -> '5' } asDictionary.
+		{ #day -> 1 . #sex -> CodiceFiscaleMale . #expected -> '01' } asDictionary.
+		{ #day -> 3 . #sex -> CodiceFiscaleMale . #expected -> '03' } asDictionary.
+		{ #day -> 5 . #sex -> CodiceFiscaleMale . #expected -> '05' } asDictionary.
 		{ #day -> 11 . #sex -> CodiceFiscaleMale . #expected -> '11' } asDictionary.
 		{ #day -> 23 . #sex -> CodiceFiscaleMale . #expected -> '23' } asDictionary.
 		{ #day -> 30 . #sex -> CodiceFiscaleMale . #expected -> '30' } asDictionary.
+		
+		{ #day -> 1 . #sex -> CodiceFiscaleFemale . #expected -> '41' } asDictionary.
+		{ #day -> 3 . #sex -> CodiceFiscaleFemale . #expected -> '43' } asDictionary.
+		{ #day -> 5 . #sex -> CodiceFiscaleFemale . #expected -> '45' } asDictionary.
+		{ #day -> 11 . #sex -> CodiceFiscaleFemale . #expected -> '51' } asDictionary.
+		{ #day -> 23 . #sex -> CodiceFiscaleFemale . #expected -> '63' } asDictionary.
+		{ #day -> 30 . #sex -> CodiceFiscaleFemale . #expected -> '70' } asDictionary.
 	}.
 		
 	tests do: [ :test |

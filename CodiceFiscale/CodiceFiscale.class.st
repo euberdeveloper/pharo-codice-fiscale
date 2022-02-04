@@ -35,10 +35,10 @@ CodiceFiscale class >> getRelevantLettersFromName: text withMaxConsonants: maxCo
 ]
 
 { #category : #helpers }
-CodiceFiscale class >> handleDateOfBirth: dateOfBirth [
-	"A method that given a date of birth returns the letters that will be put in the CF"	
+CodiceFiscale class >> handleDateOfBirth: dateOfBirth andSex: sex [
+	"A method that given a date of birth and the sex returns the letters that will be put in the CF"	
 			
-	^ (self handleYear: dateOfBirth), (self handleMonth: dateOfBirth).
+	^ (self handleYear: dateOfBirth), (self handleMonth: dateOfBirth), (self handleDay: dateOfBirth  andSex: sex).
 ]
 
 { #category : #helpers }
