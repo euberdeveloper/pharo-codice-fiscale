@@ -77,7 +77,7 @@ TestCodiceFiscale >> testHandleDayAndSex [
 	}.
 		
 	tests do: [ :test |
-		date := Date year: 1999 asInteger month: 1 day: (test at: #day).
+		date := Date year: 1999 asInteger month: 5 day: (test at: #day).
 		result := CodiceFiscale handleDay: date andSex: (test at: #sex).
 		self assert: result equals: (test at: #expected).
 	]
