@@ -45,7 +45,7 @@ CodiceFiscale class >> handleDateOfBirth: dateOfBirth [
 CodiceFiscale class >> handleDay: dateOfBirth andSex: sex [
 	"A method that given a date of birth returns the letters corrisponding to the day"	
 			
-	^(dateOfBirth day) + sex daysValue.
+	^((dateOfBirth day) + sex daysValue) asString.
 ]
 
 { #category : #helpers }

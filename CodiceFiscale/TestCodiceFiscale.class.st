@@ -56,6 +56,30 @@ TestCodiceFiscale >> testHandleDateOfBirth [
 ]
 
 { #category : #tests }
+TestCodiceFiscale >> testHandleDayAndSex [
+			
+	| result date tests |
+	
+	tests := {
+		{ #day -> 1 . #sex -> CodiceFiscaleMale . #expected -> '1' } asDictionary.
+		{ #day -> 3 . #sex -> CodiceFiscaleMale . #expected -> '3' } asDictionary.
+		{ #day -> 5 . #sex -> CodiceFiscaleMale . #expected -> '5' } asDictionary.
+		{ #day -> 11 . #sex -> CodiceFiscaleMale . #expected -> '11' } asDictionary.
+		{ #day -> 23 . #sex -> CodiceFiscaleMale . #expected -> '23' } asDictionary.
+		{ #day -> 30 . #sex -> CodiceFiscaleMale . #expected -> '30' } asDictionary.
+	}.
+		
+	tests do: [ :test |
+		date := Date year: 1999 asInteger month: 1 day: (test at: #day).
+		result := CodiceFiscale handleDay: date andSex: (test at: #sex).
+		self assert: result equals: (test at: #expected).
+	]
+	
+	
+	
+]
+
+{ #category : #tests }
 TestCodiceFiscale >> testHandleMonth [
 			
 	| result date tests |
